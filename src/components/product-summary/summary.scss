@@ -1,0 +1,100 @@
+.userAddress {
+    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+    padding: 1em;
+    .userAddressCard {
+        display: flex;
+    }
+}
+.deliveryButton {
+    margin: 1em;
+}
+
+.addressInput {
+    margin-right: 1em;
+}
+
+.summaryPage {
+    .summaryCard {
+        margin: 0.5em 0 0 0;
+        .summaryCardHeader {
+            background-color: green;
+            box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+            color: white;
+            padding: 1em;
+            position: relative;
+        }
+    }
+}
+.noproductsText {
+    text-align: center;
+    font-weight: 600;
+    margin: 1em;
+}
+
+.orderSummaryCard {
+    .orderSummarycardImage {
+        margin-right: 1em;
+    }
+    display: flex;
+    margin: 0 0 1em 0;
+    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+    padding: 1em;
+    img {
+        width: 5em;
+        height: 5em;
+    }
+    .summaryDesctiptiontext {
+        display: inline-block;
+        width: 25em;
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis;
+    }
+}
+
+.paymentsInformationDivs {
+    margin: 1em 0;
+    position: relative;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 1em;
+    margin: 3px 0 0 0;
+    position: absolute;
+}
+
+.paymentInformationCard {
+    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+    margin-bottom: 1em;
+    padding: 1em;
+}
+.priceDetails {
+    padding: 1em;
+    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+    margin: 0.5em 0 1em 0;
+    .priceDiv {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 768px) {
+    .options {
+        margin: 1em 0;
+    }
+}
+.proceedToPaybutton {
+    margin: 1em 0 0 0;
+}
+.changeButton {
+    position: absolute;
+    right: 1em;
+    top: 0.6em;
+    bottom: 0;
+}
+
+.newAddressButton {
+    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+    padding: 1em;
+}
