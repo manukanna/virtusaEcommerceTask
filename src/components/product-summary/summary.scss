@@ -1,10 +1,12 @@
 .userAddress {
     box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
     padding: 1em;
+
     .userAddressCard {
         display: flex;
     }
 }
+
 .deliveryButton {
     margin: 1em;
 }
@@ -16,6 +18,7 @@
 .summaryPage {
     .summaryCard {
         margin: 0.5em 0 0 0;
+
         .summaryCardHeader {
             background-color: green;
             box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
@@ -25,6 +28,7 @@
         }
     }
 }
+
 .noproductsText {
     text-align: center;
     font-weight: 600;
@@ -35,14 +39,18 @@
     .orderSummarycardImage {
         margin-right: 1em;
     }
+
     display: flex;
     margin: 0 0 1em 0;
-    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
+    box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3),
+    0 1px 1px 1px rgba(65, 69, 73, 0.15);
     padding: 1em;
+
     img {
         width: 5em;
         height: 5em;
     }
+
     .summaryDesctiptiontext {
         display: inline-block;
         width: 25em;
@@ -62,6 +70,7 @@
     font-size: 1em;
     margin: 3px 0 0 0;
     position: absolute;
+    // left: 0;
 }
 
 .paymentInformationCard {
@@ -69,10 +78,12 @@
     margin-bottom: 1em;
     padding: 1em;
 }
+
 .priceDetails {
     padding: 1em;
     box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
     margin: 0.5em 0 1em 0;
+
     .priceDiv {
         display: flex;
         justify-content: space-between;
@@ -84,9 +95,11 @@
         margin: 1em 0;
     }
 }
+
 .proceedToPaybutton {
     margin: 1em 0 0 0;
 }
+
 .changeButton {
     position: absolute;
     right: 1em;
@@ -97,4 +110,27 @@
 .newAddressButton {
     box-shadow: 0 1px 1px 0 rgba(65, 69, 73, 0.3), 0 1px 1px 1px rgba(65, 69, 73, 0.15);
     padding: 1em;
+}
+
+
+.plusMIusIcon {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0 0 0;
+
+    .plusIcon {
+        color: white;
+        background-color: green;
+        border-radius: 19px;
+        padding: 0px 8px 2px 8px;
+        cursor: pointer
+    }
+
+    .minusIcon {
+        color: white;
+        background-color: green;
+        border-radius: 19px;
+        padding: 0px 9px 2px 8px;
+        cursor: pointer
+    }
 }

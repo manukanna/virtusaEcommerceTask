@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useNavigate } from "react-router-dom";
@@ -8,16 +8,22 @@ function ConfirmationDialog(props) {
 
     const handleClose = () => {
         setShow(false)
-        navigate("/")
+        window.location.href="/"
     };
     const handleShow = () => setShow(true);
 
+
+    useEffect(() => {
+        if (props.buttonClicked) handleShow()
+
+    }, [props.buttonClicked])
+
     return (
         <>
-            <Button disabled={props.creditCardDetails.cardDetial.cardNumber.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) || props.creditCardDetails.cardDetial.cardcvv.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)
+            {/* <Button disabled={props.creditCardDetails.cardDetial.cardValidityMonth || props.creditCardDetails.cardDetial.cardNumber.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) || props.creditCardDetails.cardDetial.cardcvv.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)
                 || props.creditCardDetails.cardDetial.cardNumber.length !== 16 || props.creditCardDetails.cardDetial.cardcvv.length !== 3} variant="primary" onClick={handleShow}>
                 Proceed To Pay
-      </Button>
+      </Button> */}
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -5,35 +5,34 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import { useNavigate } from "react-router-dom";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { storePoducts } from '../../fetchProducts/fetchProducts'
+import { addProduct } from '../../store/store'
 import './products.scss'
 
 
 
 const Products = (props) => {
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    const [storeProducts, setstoreProducts] = React.useState([]);
+
+
     useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-            .then(async (res) => await res.json())
-            .then(async (res) => {
-                let allProducts = await res;
-                setstoreProducts(allProducts)
-                console.log(await res);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-
-    }, [])
-
+        dispatch(storePoducts())
+    }, [dispatch])
+    const storeProducts = useSelector((state) => {
+        return state.allProducts.storeProducts
+    })
 
     const addProductToCart = (product) => {
-        props.addedProductToCart(product)
+        let productQuantity = { ...product, quantityProduct: 1 }
+        dispatch(addProduct(productQuantity))
+        // props.addedProductToCart(product)
     }
     const buyProduct = (product) => {
-        props.addedProductToCart(product)
+        let productQuantity = { ...product, quantityProduct: 1 }
+        dispatch(addProduct(productQuantity))
         navigate(`/productsSummary`);
     }
 
@@ -41,8 +40,8 @@ const Products = (props) => {
         <>
             <Container fluid={true}>
                 <Row>
-                    {storeProducts.map((item, index) => {
-                        return <Col lg="6" sm="12" md="12" xs="12">
+                    {storeProducts?.map((item, index) => {
+                        return <Col lg="6" sm="12" md="12" xs="12" key={index}>
                             <div key={index} className="products-card">
                                 <div>
                                     <img src={item.image} alt="" />

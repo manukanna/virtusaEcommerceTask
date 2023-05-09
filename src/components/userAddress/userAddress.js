@@ -3,10 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import "./userAddess.scss"
+import "./userAddess.scss";
+import { useDispatch } from 'react-redux';
+import { defaultAddresses } from '../../store/store'
 
 function UserAddressComponent(props) {
-
+    const dispatch = useDispatch()
     const [userAddress, setuserAddress] = React.useState({
         userDetails: {
             name: "",
@@ -62,7 +64,7 @@ function UserAddressComponent(props) {
 
     let nameErrorMessage;
     let usernamechar = userAddress.userDetails.name;
-    if (usernamechar.match(/[*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+    if (usernamechar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
         nameErrorMessage = (
             <div className="errorMessage" >
                 Enter only Alphabetical Characters
@@ -113,6 +115,12 @@ function UserAddressComponent(props) {
     let localitychar = userAddress.userDetails.locality;
     if (localitychar === "") {
         localityErrorMessage = <div></div>;
+    } else if (localitychar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+        localityErrorMessage = (
+            <div className="errorMessage" >
+                Enter only Alphabetical Characters
+            </div>
+        );
     } else if (localitychar.length >= 50) {
         localityErrorMessage = (
             <div className="errorMessage" >
@@ -137,13 +145,19 @@ function UserAddressComponent(props) {
     let landmarkchar = userAddress.userDetails.landmark;
     if (landmarkchar === "") {
         landmarkErrorMessage = <div></div>;
-    } else if (landmarkchar.length >= 50) {
+    } else if (landmarkchar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+        landmarkErrorMessage = (
+            <div className="errorMessage" >
+                Enter only Alphabetical Characters
+            </div>
+        );
+    } else if (landmarkchar?.length >= 50) {
         landmarkErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (landmarkchar.length < 5) {
+    } else if (landmarkchar?.length < 5) {
         landmarkErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -159,6 +173,12 @@ function UserAddressComponent(props) {
     let statechar = userAddress.userDetails.state;
     if (statechar === "") {
         StateErrorMessage = <div></div>;
+    } else if (statechar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+        StateErrorMessage = (
+            <div className="errorMessage" >
+                Enter only Alphabetical Characters
+            </div>
+        );
     } else if (statechar.length >= 50) {
         StateErrorMessage = (
             <div className="errorMessage" >
@@ -180,6 +200,12 @@ function UserAddressComponent(props) {
     let citychar = userAddress.userDetails.city;
     if (citychar === "") {
         cityErrorMessage = <div></div>;
+    } else if (citychar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+        cityErrorMessage = (
+            <div className="errorMessage" >
+                Enter only Alphabetical Characters
+            </div>
+        );
     } else if (citychar.length >= 50) {
         cityErrorMessage = (
             <div className="errorMessage" >
@@ -213,7 +239,7 @@ function UserAddressComponent(props) {
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (pincodechar.length < 5) {
+    } else if (pincodechar.length < 6) {
         pincodeErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -240,7 +266,7 @@ function UserAddressComponent(props) {
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (phonechar.length < 5) {
+    } else if (phonechar.length < 10) {
         phoneErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -255,22 +281,22 @@ function UserAddressComponent(props) {
     let altphonechar = userAddress.userDetails.altphone;
     if (altphonechar === "") {
         altPhoneErrorMessage = <div></div>;
-    } else if (altphonechar.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)) {
+    } else if (altphonechar?.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)) {
         altPhoneErrorMessage = (
             <div className="errorMessage" >
                 Enter only Numeric Characters
             </div>
         );
-    } else if (altphonechar.length >= 50) {
+    } else if (altphonechar?.length >= 50) {
         altPhoneErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (altphonechar.length < 5) {
+    } else if (altphonechar?.length < 10) {
         altPhoneErrorMessage = (
             <div className="errorMessage" >
-                You cannot enter less than 5 Characters
+                You cannot enter less than 10 Characters
             </div>
         );
     } else {
@@ -285,8 +311,10 @@ function UserAddressComponent(props) {
 
 
     const submitUserAddress = () => {
-        let submitted = { ...userAddress.userDetails, addressConfirmed: addressConfirmed }
+        let submitted = { ...userAddress.userDetails, addressConfirmed: true }
         console.log(submitted);
+        dispatch(defaultAddresses(submitted))
+        setShow(false)
     }
 
 
@@ -360,6 +388,7 @@ function UserAddressComponent(props) {
                         <Form.Control
                             type="text"
                             name="pincode"
+                            maxLength="6"
                             placeholder="Pincode"
                             onChange={editAddress}
                             value={userAddress.userDetails.pincode}
@@ -369,6 +398,7 @@ function UserAddressComponent(props) {
                         <Form.Control
                             type="text"
                             name="phone"
+                            maxLength="10"
                             placeholder="Phone"
                             onChange={editAddress}
                             value={userAddress.userDetails.phone}
@@ -377,6 +407,7 @@ function UserAddressComponent(props) {
                         <Form.Label className="userAddressLable">Alt Phone</Form.Label>
                         <Form.Control
                             type="text"
+                            maxLength="10"
                             name="altphone"
                             placeholder="Alt Phone"
                             onChange={editAddress}
@@ -389,11 +420,23 @@ function UserAddressComponent(props) {
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancel
-          </Button>
+                    </Button>
                     <Button
+                        disabled={
+                            !userAddress.userDetails.altphone || userAddress.userDetails.altphone?.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) ||
+                            !userAddress.userDetails.phone || userAddress.userDetails.phone?.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) ||
+                            !userAddress.userDetails.pincode || userAddress.userDetails?.pincode?.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) ||
+                            !userAddress.userDetails.city || userAddress.userDetails?.city.match(/[0-9!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) ||
+                            !userAddress.userDetails.state || userAddress.userDetails?.state.match(/[0-9!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/) ||
+                            !userAddress.userDetails.landmark || userAddress.userDetails?.landmark.match(/[0-9!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/
+
+
+
+
+                            )}
                         variant="primary" onClick={submitUserAddress}>
                         Add Address
-          </Button>
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </>
