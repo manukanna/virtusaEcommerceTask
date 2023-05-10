@@ -97,12 +97,12 @@ const ShippingInformation = (props) => {
         let totalCost = productsAdded.reduce((acc, curVal) => {
             return acc + (curVal.price * curVal.quantityProduct);
         }, 0)
-        return totalCost
+        return Number(totalCost).toFixed(2)
     }
     const totalPaymentWithCharges = () => {
         const totalCostIncludes = [totalPayment(), 20, 20]
         let totalCost = totalCostIncludes.reduce((sum, item) => sum + item, 0);
-        return totalCost
+        return Number(totalCost).toFixed(2)
     }
 
     const changeCardDetails = (e) => {

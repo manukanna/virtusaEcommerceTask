@@ -1,4 +1,4 @@
-import { configureStore, createSlice, current } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 import { storePoducts } from '../fetchProducts/fetchProducts'
 
@@ -36,29 +36,37 @@ const addedProductsToCart = createSlice({
     initialState: [],
     reducers: {
         addProduct(state, action) {
+            let data;
             if (state.length === 0) {
                 state.push(action.payload);
             } else {
-                let pushed = false;
-                for (let i = 0; i < state.length; i++) {
-                    if (state[i].title === action.payload.title) {
-                        pushed = true;
-                        state[i].quantityProduct = state[i].quantityProduct + 1;
-                        break;
+                let quantityAddeed = false;
+                data = state.map(item => {
+                    if (item.title === action.payload.title) {
+                        console.log("matched");
+                        quantityAddeed = true
+                        return { ...item, quantityProduct: item.quantityProduct + 1 }
+                    } else {
+                        return item
                     }
-                }
-                if (!pushed) state.push(action.payload)
+                })
+                if (!quantityAddeed) state.push(action.payload)
+                if (quantityAddeed) state = data
             }
+            console.log(data);
+
             return state;
         },
         removeProduct(state, action) {
-            let data = state.map(item => {
+
+            let decreaseCountItem = state.map(item => {
                 if (item.title === action.payload.title) {
                     return { ...item, quantityProduct: item.quantityProduct - 1 }
                 }
                 return item
             })
-            return data
+            let removeItem = decreaseCountItem.filter(item => item.quantityProduct !== 0)
+            return removeItem
 
         }
     }
