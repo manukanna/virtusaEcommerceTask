@@ -43,7 +43,6 @@ const addedProductsToCart = createSlice({
                 let quantityAddeed = false;
                 data = state.map(item => {
                     if (item.title === action.payload.title) {
-                        console.log("matched");
                         quantityAddeed = true
                         return { ...item, quantityProduct: item.quantityProduct + 1 }
                     } else {
@@ -53,7 +52,6 @@ const addedProductsToCart = createSlice({
                 if (!quantityAddeed) state.push(action.payload)
                 if (quantityAddeed) state = data
             }
-            console.log(data);
 
             return state;
         },
