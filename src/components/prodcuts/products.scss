@@ -1,0 +1,32 @@
+.products-card {
+    display: flex;
+    border: 1px solid #aaaa;
+    padding: 1em;
+    border-radius: 10px;
+    margin: 10px;
+    overflow: hidden;
+    img {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+        margin: 0 1em 0 0;
+    }
+    .product-description {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+    .product-title{
+        font-size: 1.2em;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+    }
+    .product-buttons{
+        Button{
+            margin: 1em 0 0 0.2em;
+        }
+    }
+}

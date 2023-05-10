@@ -1,0 +1,20 @@
+.poductsNavbar {
+    .cartCss {
+        cursor: pointer;
+    }
+    svg {
+        color: white;
+        width: 3em;
+        height: 3em;
+        margin-right: 1em;
+    }
+    span {
+        position: absolute;
+        right: 0.5em;
+        top: 0em;
+        color: blue;
+        background-color: white;
+        border-radius: 10px;
+        padding: 0px 7px;
+    }
+}
