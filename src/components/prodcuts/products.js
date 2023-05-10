@@ -22,7 +22,10 @@ const Products = (props) => {
         dispatch(storePoducts())
     }, [dispatch])
     const storeProducts = useSelector((state) => {
-        return state.allProducts.storeProducts
+        let productsData = state.allProducts.storeProducts.map(item => {
+            return { ...item, price: Math.round(item.price)}
+        })
+        return productsData
     })
 
     const addProductToCart = (product) => {

@@ -86,19 +86,19 @@ const orderSummaryStatus = createSlice({
         }
     ],
     reducers: {
-        addressSelected(state) {
+        addressSelected(state, action) {
             let userShippingAddressSelected = state.map(item => {
                 return { ...item, shippingsSummary: false, shippingsEditedSummary: true, billingInformation: true }
             })
             return userShippingAddressSelected;
         },
-        billingSelected(state) {
+        billingSelected(state,action) {
             let userBillingAddressSelected = state.map(item => {
                 return { ...item, billingInformation: false, billingInformationEdited: true, oderSummary: true }
             })
             return userBillingAddressSelected;
         },
-        productsConfirmed(state) {
+        productsConfirmed(state,action) {
             let userProductsConfirmed = state.map(item => {
                 return { ...item, oderSummary: false, oderSummaryEdited: true, paymentInformation: true }
             })
@@ -141,7 +141,7 @@ const userShippingAddressSelected = createSlice({
     name: "userAddressSelected",
     initialState: {},
     reducers: {
-        deliveryAddress(action) {
+        deliveryAddress(state, action) {
             return action.payload
         },
     }
@@ -151,7 +151,7 @@ const userBillingAddressSelected = createSlice({
     name: "userAddressSelected",
     initialState: {},
     reducers: {
-        billingAddress(action) {
+        billingAddress(state, action) {
             return action.payload
         }
     }
@@ -181,6 +181,27 @@ const userAllAddress = createSlice({
                 }
             })
             return addressChange
+        }
+    }
+})
+
+
+const getMonthsList = createSlice({
+    name: "monthsList",
+    initialState: [],
+    reducers: {
+        getMonths(state, action) {
+            let date;
+            const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            let currentYear = new Date().getFullYear();
+            if (JSON.stringify(currentYear) === action.payload) {
+                date = new Date();
+            } else {
+                date = new Date("January", action.payload);
+            }
+            const rest = month.slice(date.getMonth())
+
+            return rest
         }
     }
 })
@@ -215,6 +236,7 @@ const store = configureStore({
         deliveryAddress: userShippingAddressSelected.reducer,
         billingAddress: userBillingAddressSelected.reducer,
         defaultAddresses: userAllAddress.reducer,
+        getMonths: getMonthsList.reducer,
 
     }
 })
@@ -226,3 +248,4 @@ export const { addressSelected, billingSelected, productsConfirmed, changeButton
 export const { deliveryAddress } = userShippingAddressSelected.actions
 export const { billingAddress } = userBillingAddressSelected.actions
 export const { defaultAddresses, changesAddress } = userAllAddress.actions
+export const { getMonths } = getMonthsList.actions

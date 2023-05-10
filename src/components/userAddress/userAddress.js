@@ -64,7 +64,7 @@ function UserAddressComponent(props) {
 
     let nameErrorMessage;
     let usernamechar = userAddress.userDetails.name;
-    if (usernamechar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+    if (usernamechar?.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
         nameErrorMessage = (
             <div className="errorMessage" >
                 Enter only Alphabetical Characters
@@ -72,13 +72,13 @@ function UserAddressComponent(props) {
         );
     } else if (usernamechar === "") {
         nameErrorMessage = <div></div>;
-    } else if (usernamechar.length >= 50) {
+    } else if (usernamechar?.length >= 50) {
         nameErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (usernamechar.length < 5) {
+    } else if (usernamechar?.length < 5) {
         nameErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -94,13 +94,13 @@ function UserAddressComponent(props) {
     let doorNochar = userAddress.userDetails.address;
     if (doorNochar === "") {
         doorNoErrorMessage = <div></div>;
-    } else if (doorNochar.length >= 50) {
+    } else if (doorNochar?.length >= 50) {
         doorNoErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (doorNochar.length < 5) {
+    } else if (doorNochar?.length < 5) {
         doorNoErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -115,19 +115,19 @@ function UserAddressComponent(props) {
     let localitychar = userAddress.userDetails.locality;
     if (localitychar === "") {
         localityErrorMessage = <div></div>;
-    } else if (localitychar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+    } else if (localitychar?.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
         localityErrorMessage = (
             <div className="errorMessage" >
                 Enter only Alphabetical Characters
             </div>
         );
-    } else if (localitychar.length >= 50) {
+    } else if (localitychar?.length >= 50) {
         localityErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (localitychar.length < 5) {
+    } else if (localitychar?.length < 5) {
         localityErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -145,7 +145,7 @@ function UserAddressComponent(props) {
     let landmarkchar = userAddress.userDetails.landmark;
     if (landmarkchar === "") {
         landmarkErrorMessage = <div></div>;
-    } else if (landmarkchar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+    } else if (landmarkchar?.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
         landmarkErrorMessage = (
             <div className="errorMessage" >
                 Enter only Alphabetical Characters
@@ -173,19 +173,19 @@ function UserAddressComponent(props) {
     let statechar = userAddress.userDetails.state;
     if (statechar === "") {
         StateErrorMessage = <div></div>;
-    } else if (statechar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+    } else if (statechar?.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
         StateErrorMessage = (
             <div className="errorMessage" >
                 Enter only Alphabetical Characters
             </div>
         );
-    } else if (statechar.length >= 50) {
+    } else if (statechar?.length >= 50) {
         StateErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (statechar.length < 5) {
+    } else if (statechar?.length < 5) {
         StateErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -200,19 +200,19 @@ function UserAddressComponent(props) {
     let citychar = userAddress.userDetails.city;
     if (citychar === "") {
         cityErrorMessage = <div></div>;
-    } else if (citychar.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
+    } else if (citychar?.match(/[0-9*|":<>[\]/,-.?{}`\\()%^'=+;@&$#!~"]/)) {
         cityErrorMessage = (
             <div className="errorMessage" >
                 Enter only Alphabetical Characters
             </div>
         );
-    } else if (citychar.length >= 50) {
+    } else if (citychar?.length >= 50) {
         cityErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (citychar.length < 5) {
+    } else if (citychar?.length < 5) {
         cityErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -227,19 +227,19 @@ function UserAddressComponent(props) {
     let pincodechar = userAddress.userDetails.pincode;
     if (pincodechar === "") {
         pincodeErrorMessage = <div></div>;
-    } else if (pincodechar.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)) {
+    } else if (pincodechar?.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)) {
         pincodeErrorMessage = (
             <div className="errorMessage" >
                 Enter only Numeric Characters
             </div>
         );
-    } else if (pincodechar.length >= 50) {
+    } else if (pincodechar?.length >= 50) {
         pincodeErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (pincodechar.length < 6) {
+    } else if (pincodechar?.length < 6) {
         pincodeErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -254,19 +254,19 @@ function UserAddressComponent(props) {
     let phonechar = userAddress.userDetails.phone;
     if (phonechar === "") {
         phoneErrorMessage = <div></div>;
-    } else if (phonechar.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)) {
+    } else if (phonechar?.match(/[a-zA-Z!@#$%^&*()_+\-=[\]{};':"|,.<>/?]/)) {
         phoneErrorMessage = (
             <div className="errorMessage" >
                 Enter only Numeric Characters
             </div>
         );
-    } else if (phonechar.length >= 50) {
+    } else if (phonechar?.length >= 50) {
         phoneErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter More than 50 Characters
             </div>
         );
-    } else if (phonechar.length < 10) {
+    } else if (phonechar?.length < 10) {
         phoneErrorMessage = (
             <div className="errorMessage" >
                 You cannot enter less than 5 Characters
@@ -311,7 +311,7 @@ function UserAddressComponent(props) {
 
 
     const submitUserAddress = () => {
-        let submitted = { ...userAddress.userDetails, addressConfirmed: true }
+        let submitted = { ...userAddress.userDetails, addressConfirmed: false }
         console.log(submitted);
         dispatch(defaultAddresses(submitted))
         setShow(false)
@@ -415,7 +415,7 @@ function UserAddressComponent(props) {
                         />
                         {altPhoneErrorMessage}
                     </Form>
-                    <input type="checkbox" onChange={changeDefaultAddress} checked={addressConfirmed} value={addressConfirmed} name="addressConfirmed" /> Defualt Address select
+                    {/* <input type="checkbox" onChange={changeDefaultAddress} checked={addressConfirmed} value={addressConfirmed} name="addressConfirmed" /> Defualt Address select */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
